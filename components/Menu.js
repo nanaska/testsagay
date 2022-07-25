@@ -20,7 +20,7 @@ export default function Menu(){
     }
     return(<div className="p-6">
     <div className="flex flex-row items-center justify-between"><div className="text-xl">
-        Меню
+        Менюс
     </div>
         <div>
             <input type="text"  onChange={(e)=>{searchPizzaById(e.target.value)}} placeholder="Type here" className="input w-full max-w-xs"/>
