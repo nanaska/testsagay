@@ -28,16 +28,16 @@ export default function Menu(){
     </div>
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
            {content.map((content,index)=> <div key={index} className="flex h-[607px] md:w-[250px] flex-row md:flex-col items-center justify-center">
-                <div className="flex items-center   justify-center w-1/2 md:w-full">
+                <div className="flex items-center   justify-center w-[50%] md:w-full">
                     <Image src={content.img} height={250} width={250}/>
                 </div>
 
-                <div className="flex items-center justify-center flex-col w-1/2 md:w-full">
-                    <div className="flex text-center items-center justify-center text-2xl">{content.title}</div>
-                    <p className="flex text-center items-center text-start justify-start mt-7  min-h-[50px] text-neutral-focus">{content.description}</p>
+                <div className="flex items-center justify-center flex-col w-[50%] md:w-full">
+                    <div className="flex  items-center justify-center text-left md:text-center font-medium text-2xl">{content.title}</div>
+                    <p className="flex text-center items-center text-start justify-start mt-7  min-h-[50px] text-neutral-focus/80">{content.description}</p>
                     <div className="flex  flex-row w-full items-center justify-center mt-6">
-                        <div className="p-3 px-4 rounded bg-primary text-primary-content">{content.prices[0]}</div>
-                        <div className="btn btn-sm md:btn-md  ml-auto justify-center p-2 items-center  btn-outline">Выбрать</div>
+                        <div className="p-3  px-4 items-center justify-center rounded bg-primary text-primary-content text-xl">{content.prices[0]} Р</div>
+                        <div className="btn btn-sm  md:btn-md  ml-auto justify-center p-2 items-center btn-outline rounded-[90px]">Выбрать</div>
                     </div>
                 </div>
             </div>)}
