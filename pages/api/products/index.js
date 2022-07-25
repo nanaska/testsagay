@@ -17,13 +17,5 @@ export default async function handler(req,res){
             res.status(500).json(e);
         }
     }
-    if (method === "POST"){
-        try{
-            const products = await Product.create(req.body);
-            res.status(201).json(products)
 
-        }catch (e){
-            res.status(500).json(e);
-        }
-    }
 }

@@ -5,14 +5,14 @@ export default function Menu(){
     const [content, setContent] = useState([])
     const [contentInput, setContentInput] = useState("")
     const awdf = async () => {
-        const res = await fetch(`/api/products`)
+        const res = await fetch(`api/products`)
         const data = await res.json()
         setContent(data)
 
     }
     useEffect(()=>{awdf()},[])
     const  searchPizzaById = async (id) => {
-        const res = await fetch(`/api/products/search/${id}`)
+        const res = await fetch(`api/products/search/${id}`)
         const data = await res.json()
         setContent(data)
         console.log(content)
@@ -20,7 +20,7 @@ export default function Menu(){
     }
     return(<div className="p-6">
     <div className="flex flex-row items-center justify-between"><div className="text-xl">
-        Менюс
+        Меню
     </div>
         <div>
             <input type="text"  onChange={(e)=>{searchPizzaById(e.target.value)}} placeholder="Type here" className="input w-full max-w-xs"/>
