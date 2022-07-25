@@ -22,9 +22,9 @@ export default function Menu(){
     <div className="flex flex-row items-center justify-between"><div className="text-xl">
         Меню
     </div>
-        <div>
-            <input type="text"  onChange={(e)=>{searchPizzaById(e.target.value)}} placeholder="Type here" className="input w-full max-w-xs"/>
-        </div>
+        {/*<div>*/}
+        {/*    <input type="text"  onChange={(e)=>{searchPizzaById(e.target.value)}} placeholder="Type here" className="input w-full max-w-xs"/>*/}
+        {/*</div>*/}
     </div>
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
            {content.map((content,index)=> <div key={index} className="flex h-[607px] md:w-[250px] flex-row md:flex-col items-center justify-center">
