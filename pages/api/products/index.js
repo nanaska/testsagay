@@ -9,7 +9,7 @@ export default async function handler(req,res){
     if (method === "GET"){
         try{
 
-            const products = await Product.find( );
+            const products = await Product.find();
             res.status(201).json(products)
 
 

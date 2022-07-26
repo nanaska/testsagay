@@ -9,10 +9,17 @@ export default async function handler(req,res,id){
     if (method === "GET"){
         try{
             const { index } = req.query
+            if(index.length <= 1){
+                const products = await Product.find();
+                res.status(201).json(products)
+            }
+            if(index.length > 1){
+                const products = await Product.find({title: {$regex: String(`${index}`)}});
+                res.status(201).json(products)
+            }
 
-            const products = await Product.find({title: {$regex: String(`${index}`)}});
 
-            res.status(201).json(products)
+
 
 
         }catch (e){
