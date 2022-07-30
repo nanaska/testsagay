@@ -1,8 +1,12 @@
 import Image from "next/image"
 import Garbage from "/public/Garbage.svg"
-import Link from "next/link";
+import Link from "next/link"
+import {signIn, signOut, useSession} from "next-auth/react"
+import {useEffect} from "react";
 
 export default function Navbar() {
+    const {data, status} = useSession()
+    useEffect(()=>{console.log(data,status)},[data,status])
     return (<>
             <div className="navbar  bg-base-100">
                 <div className="navbar-start">
@@ -16,7 +20,7 @@ export default function Navbar() {
                         </label>
 
                     </div>
-                    <Link href="/" ><a className="btn btn-ghost normal-case text-2xl">SAGAY</a></Link>
+                    <Link href="/"><a className="btn btn-ghost normal-case text-2xl">SAGAY</a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
@@ -44,16 +48,37 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end  flex flex-row space-x-1">
-                    <Link href="/garbage"><div className="hover:bg-base-300 flex flex-row items-center justify-center rounded p-2 cursor-pointer">
-                        <div className="flex  flex items-center justify-center">
-                            <div className="absolute ml-5 mb-5 z-20">
-                                <div className="rounded-[90px] px-[7px] py-[0px]  bg-orange-300 text-white">1</div>
+                    <Link href="/garbage">
+                        <div
+                            className="hover:bg-base-300 flex flex-row items-center justify-center rounded p-2 cursor-pointer">
+                            <div className="flex  flex items-center justify-center">
+                                <div className="absolute ml-5 mb-5 z-20">
+                                    <div className="rounded-[90px] px-[7px] py-[0px]  bg-orange-300 text-white">1</div>
 
+                                </div>
+                                <Image className="" src={Garbage} height={40} width={40}/>
                             </div>
-                            <Image className="" src={Garbage} height={40} width={40}/>
+                            <a className=" flex items-center justify-center text-xl font-medium">Корзина</a>
                         </div>
-                        <a className=" flex items-center justify-center text-xl font-medium">Корзина</a>
-                    </div></Link>
+                    </Link>
+                </div>
+                <div>
+                    {status === "authenticated" ?
+                        <div onClick={() => {
+                            signOut("github", {
+                                callbackUrl: "http://localhost:3000"
+                            })
+                        }}>
+                            SignIn
+                        </div> :
+                        <div onClick={() => {
+                            signIn("github", {
+                                callbackUrl: "http://localhost:3000"
+                            }).then(a => console.log( data))
+                        }}>
+                            Log out
+                        </div>}
+
                 </div>
             </div>
         </>

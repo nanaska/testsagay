@@ -16,7 +16,7 @@ a {
 
 * {
   box-sizing: border-box;
-
+/*border: 1px red solid;*/
 }
 
 @media (prefers-color-scheme: dark) {
