@@ -13,6 +13,7 @@ function MyApp({Component, pageProps}) {
                     <PreHeader/>
                     <Navbar/>
                 </Container>
+                123
                 <Component {...pageProps} ></Component>
             </Provider>
         </ChakraProvider>
