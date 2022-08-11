@@ -7,14 +7,30 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model Product {
+model Number{
+    id Int @id @default(autoincrement())
+    number String @unique
+}
+model Product{
     id Int @id @default(autoincrement())
     title String
-    description String
-    type Int
     price Int
     img String
-    count Int @default(0)
-    pizzaFilterType Int
-    rollsFilterType Int
+    description String
+    type Type @relation(fields: [typeId], references: [id])
+    typeId Int
+    counterForRelevant Int @default(0)
+    filterType FilterType[]
 }
+
+model Type{
+    id Int @id @default(autoincrement())
+    name Int
+    product Product[]
+}
+model FilterType {
+    id Int @id @default(autoincrement())
+    name Int
+    product Product[]
+}
+

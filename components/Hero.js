@@ -1,38 +1,51 @@
 import Image from "next/image"
-import HeroImage from "../public/HeroImage.png"
-export default function Hero(){
-    return(<div className="mt-16 md:mt-0">
+import {Navigation, Pagination, Scrollbar, A11y, Autoplay} from 'swiper';
 
-        <div className="carousel w-full max-h-96">
-            <div id="slide1" className="carousel-item relative w-full">
-                <Image src={HeroImage} width={1920} height={1080}/>
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
-                    <a href="#slide2" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <img src="https://placeimg.com/800/200/arch" className="w-full"/>
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide1" className="btn btn-circle">❮</a>
-                    <a href="#slide3" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide3" className="carousel-item relative w-full">
-                <Image src={HeroImage} width={1920} height={480}/>
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide2" className="btn btn-circle">❮</a>
-                    <a href="#slide4" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide4" className="carousel-item  relative w-full">
-                <img src="https://placeimg.com/800/200/arch" className="w-full"/>
-                <div className="absolute flex justify-between transform -translate-y-1/2 dy left-5 right-5 top-1/2">
-                    <a href="#slide3" className="btn  btn-circle">❮</a>
-                    <a href="#slide1" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-        </div>
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import "swiper/css/autoplay"
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import HeroImage from "../public/HeroImage.png"
+
+export default function Hero(){
+    return(<div className=" md:mt-0">
+
+
+
+        <Swiper
+            // install Swiper modules
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            spaceBetween={0}
+            slidesPerView={1}
+
+            centeredSlides={true}
+            autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+            }}
+            pagination={{ clickable: true }}
+
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+        >
+            <SwiperSlide>
+                <Image src={HeroImage} width={3840} height={1280}/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={HeroImage} width={3840} height={1280}/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={HeroImage} width={3840} height={1280}/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Image src={HeroImage} width={3840} height={1280}/>
+            </SwiperSlide>
+            <br/>
+        </Swiper>
 
     </div>)
 }

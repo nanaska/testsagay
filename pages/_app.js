@@ -3,15 +3,19 @@ import PreHeader from "../components/preHeader";
 import Navbar from "../components/navbar";
 import store from '../store'
 import {Provider} from 'react-redux'
-import {SessionProvider} from "next-auth/react";
+import {ChakraProvider, Container} from '@chakra-ui/react'
 
 function MyApp({Component, pageProps}) {
     return (
-        <SessionProvider session={pageProps.session}>
+        <ChakraProvider>
             <Provider store={store}>
-                <PreHeader/><Navbar/><Component {...pageProps} ></Component>
+                <Container maxWidth={1920}>
+                    <PreHeader/>
+                    <Navbar/>
+                </Container>
+                <Component {...pageProps} ></Component>
             </Provider>
-    </SessionProvider>
+        </ChakraProvider>
     )
 }
 
